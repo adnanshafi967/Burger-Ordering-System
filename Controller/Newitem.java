@@ -19,7 +19,8 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class Newitem {
-    public void item(String name,String price,String id) throws SQLException, ClassNotFoundException{
+    
+    public boolean item(String name,String price,String id) throws SQLException, ClassNotFoundException{
         
                 DataConnector c = new DataConnector();
                 Connection connection = c.Connector();
@@ -34,8 +35,8 @@ public class Newitem {
                 String name2 = result.getString("CatalogueID");
             
                 JOptionPane.showMessageDialog(null, name2+" : Catalogue id alrady exist");
-            
-                
+            return false;
+               
             }
             catch (SQLException e){
                 try{
@@ -58,9 +59,11 @@ public class Newitem {
             
                     statement.executeUpdate(query); 
                     JOptionPane.showMessageDialog(null, "Successfully added");
+                    
                 }
+                return false;
             }
-           
+            
            }
             
             }
