@@ -41,7 +41,7 @@ public class upstatus {
        }
         return null;
     }
-    public void up(String sta, String id){
+    public boolean up(String sta, String id){
         try{
             DataConnector c = new DataConnector();
             Connection connection = c.Connector();
@@ -49,9 +49,11 @@ public class upstatus {
             Statement statement = connection.createStatement();
                     statement.executeUpdate(query2); 
                     JOptionPane.showMessageDialog(null, "Successfully updated");
+                    return false;
         }
         catch(HeadlessException | ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, "Order Id does not exist");
+            return false;
        }
     }
     

@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class admin {
-    public void login(String email, String pass) throws SQLException, ClassNotFoundException{
+    public boolean login(String email, String pass) throws SQLException, ClassNotFoundException{
         try{
             DataConnector c = new DataConnector();
         
@@ -41,9 +41,11 @@ public class admin {
            else{
                JOptionPane.showMessageDialog(null, "Incorrect Password");
            }
+           return true;
         }
         catch(HeadlessException | ClassNotFoundException | SQLException e){
            JOptionPane.showMessageDialog(null, "Email does not exist");
+           return true;
        }
     }
     }

@@ -19,7 +19,7 @@ package Controller;
      * @author User
      */
     public class delete {
-        public void del(String id) throws ClassNotFoundException, SQLException{
+        public boolean del(String id) throws ClassNotFoundException, SQLException{
             try{
             DataConnector c = new DataConnector();
                 Connection connection = c.Connector();
@@ -37,10 +37,11 @@ package Controller;
                     statement.executeUpdate(query2); 
                     JOptionPane.showMessageDialog(null, "Successfully Deleted");
                 }
-                
+               return false; 
         }
             catch(HeadlessException | ClassNotFoundException | SQLException e){
                     JOptionPane.showMessageDialog(null, "CatalogueID does not exist");
+                    return false;
                    } 
     }
     }

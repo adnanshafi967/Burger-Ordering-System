@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class viewstatus {
-    public void view(String id){
+    public boolean view(String id){
         try{
         DataConnector c = new DataConnector();
                 Connection connection = c.Connector();
@@ -32,9 +32,11 @@ public class viewstatus {
             result.next();
             String name = result.getString("Status");
             JOptionPane.showMessageDialog(null,name);
+            return false;
         }
         catch(HeadlessException | ClassNotFoundException | SQLException e){
                 JOptionPane.showMessageDialog(null, " Order ID does not exist ");
+                return false;
                } 
 }
 }
